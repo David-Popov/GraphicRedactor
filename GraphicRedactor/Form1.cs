@@ -14,7 +14,7 @@ namespace GraphicRedactor
 
         Bitmap bitmap;
         private Graphics g;
-        List<Shape>listOfShapes = new List<Shape>();
+        List<Shape> listOfShapes = new List<Shape>();
         Pen pen = new Pen(Color.Black, 5);
         Shape shape = new Elipse();
         bool isDrawing = false;
@@ -23,8 +23,8 @@ namespace GraphicRedactor
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            isDrawing= true;
-            start = new Point(e.X,e.Y);
+            isDrawing = true;
+            start = new Point(e.X, e.Y);
             end = new Point(e.X, e.Y);
             shape.StartLocation = start;
             shape.EndLocation = end;
@@ -45,7 +45,7 @@ namespace GraphicRedactor
             isDrawing = false;
             end.X = e.X;
             end.Y = e.Y;
-            shape.EndLocation= end;
+            shape.EndLocation = end;
             shape.Draw(g, pen);
         }
 
@@ -62,7 +62,7 @@ namespace GraphicRedactor
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-           Graphics gs = e.Graphics;
+            Graphics gs = e.Graphics;
 
             if (isDrawing)
             {
@@ -83,6 +83,11 @@ namespace GraphicRedactor
         private void DrawTextBtn_Click(object sender, EventArgs e)
         {
             shape = new TextCl(textBox1.Text);
+        }
+
+        private void Line_Click(object sender, EventArgs e)
+        {
+            shape = new Line();
         }
     }
 }

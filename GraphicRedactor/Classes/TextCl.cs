@@ -9,15 +9,18 @@ namespace GraphicRedactor.Classes
     public class TextCl : Shape
     {
         public string Input { get; set; }
-        public TextCl(string input)
+        SolidBrush brush;
+        Font font;
+        public TextCl(string input, SolidBrush brush, Font font)
         {
             Input = input;
+            this.brush = brush;
+            this.font = font;
         }
 
         public override void Draw(Graphics g, Pen p)
         {
-            var brush = new SolidBrush(Color.Black);
-            g.DrawString(Input,new Font("Arial",50),brush,this.StartLocation);
+            g.DrawString(Input,this.font,this.brush,this.StartLocation);
         }
     }
 }

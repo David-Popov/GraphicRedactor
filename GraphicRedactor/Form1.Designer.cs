@@ -28,81 +28,92 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Rectangle = new System.Windows.Forms.Button();
-            this.Elipse = new System.Windows.Forms.Button();
-            this.DrawTextBtn = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            pictureBox1 = new PictureBox();
+            Rectangle = new Button();
+            Elipse = new Button();
+            DrawTextBtn = new Button();
+            textBox1 = new TextBox();
+            Line = new Button();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(2, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(841, 548);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
-            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
-            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+            pictureBox1.Location = new Point(2, 2);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(841, 548);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            pictureBox1.Paint += pictureBox1_Paint;
+            pictureBox1.MouseClick += pictureBox1_MouseClick;
+            pictureBox1.MouseDown += pictureBox1_MouseDown;
+            pictureBox1.MouseMove += pictureBox1_MouseMove;
+            pictureBox1.MouseUp += pictureBox1_MouseUp;
             // 
             // Rectangle
             // 
-            this.Rectangle.Location = new System.Drawing.Point(868, 14);
-            this.Rectangle.Name = "Rectangle";
-            this.Rectangle.Size = new System.Drawing.Size(75, 23);
-            this.Rectangle.TabIndex = 1;
-            this.Rectangle.Text = "Rectangle";
-            this.Rectangle.UseVisualStyleBackColor = true;
-            this.Rectangle.Click += new System.EventHandler(this.Rectangle_Click);
+            Rectangle.Location = new Point(875, 12);
+            Rectangle.Name = "Rectangle";
+            Rectangle.Size = new Size(75, 23);
+            Rectangle.TabIndex = 1;
+            Rectangle.Text = "Rectangle";
+            Rectangle.UseVisualStyleBackColor = true;
+            Rectangle.Click += Rectangle_Click;
             // 
             // Elipse
             // 
-            this.Elipse.Location = new System.Drawing.Point(871, 49);
-            this.Elipse.Name = "Elipse";
-            this.Elipse.Size = new System.Drawing.Size(75, 23);
-            this.Elipse.TabIndex = 2;
-            this.Elipse.Text = "Elipse";
-            this.Elipse.UseVisualStyleBackColor = true;
-            this.Elipse.Click += new System.EventHandler(this.Elipse_Click);
+            Elipse.Location = new Point(875, 41);
+            Elipse.Name = "Elipse";
+            Elipse.Size = new Size(75, 23);
+            Elipse.TabIndex = 2;
+            Elipse.Text = "Elipse";
+            Elipse.UseVisualStyleBackColor = true;
+            Elipse.Click += Elipse_Click;
             // 
             // DrawTextBtn
             // 
-            this.DrawTextBtn.Location = new System.Drawing.Point(875, 87);
-            this.DrawTextBtn.Name = "DrawTextBtn";
-            this.DrawTextBtn.Size = new System.Drawing.Size(75, 23);
-            this.DrawTextBtn.TabIndex = 3;
-            this.DrawTextBtn.Text = "Text";
-            this.DrawTextBtn.UseVisualStyleBackColor = true;
-            this.DrawTextBtn.Click += new System.EventHandler(this.DrawTextBtn_Click);
+            DrawTextBtn.Location = new Point(875, 125);
+            DrawTextBtn.Name = "DrawTextBtn";
+            DrawTextBtn.Size = new Size(75, 23);
+            DrawTextBtn.TabIndex = 3;
+            DrawTextBtn.Text = "Text";
+            DrawTextBtn.UseVisualStyleBackColor = true;
+            DrawTextBtn.Click += DrawTextBtn_Click;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(868, 116);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 4;
+            textBox1.Location = new Point(861, 154);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 4;
+            // 
+            // Line
+            // 
+            Line.Location = new Point(875, 70);
+            Line.Name = "Line";
+            Line.Size = new Size(75, 23);
+            Line.TabIndex = 5;
+            Line.Text = "Line";
+            Line.UseVisualStyleBackColor = true;
+            Line.Click += Line_Click;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 553);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.DrawTextBtn);
-            this.Controls.Add(this.Elipse);
-            this.Controls.Add(this.Rectangle);
-            this.Controls.Add(this.pictureBox1);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(982, 553);
+            Controls.Add(Line);
+            Controls.Add(textBox1);
+            Controls.Add(DrawTextBtn);
+            Controls.Add(Elipse);
+            Controls.Add(Rectangle);
+            Controls.Add(pictureBox1);
+            Name = "Form1";
+            Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -112,5 +123,6 @@
         private Button Elipse;
         private Button DrawTextBtn;
         private TextBox textBox1;
+        private Button Line;
     }
 }
