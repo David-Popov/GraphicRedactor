@@ -8,11 +8,9 @@ namespace GraphicRedactor.Classes
 {
     public class RectangleCl : Shape
     {
-       
 
         public override void Draw(Graphics g, Pen p)
         {
-            
             g.DrawRectangle(p,this.StartLocation.X,this.StartLocation.Y,this.Width,this.Height);
         }
     }

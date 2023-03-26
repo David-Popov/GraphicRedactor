@@ -6,7 +6,26 @@ using System.Threading.Tasks;
 
 namespace GraphicRedactor.Tools
 {
-    internal class Tool
+    public class Tool
     {
+        public void Fill()
+        {
+
+        }
+
+        public void Move()
+        {
+
+        }
+
+        public void Copy()
+        {
+
+        }
+
+        public void Delete()
+        {
+
+        }
     }
 }

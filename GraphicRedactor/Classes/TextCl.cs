@@ -11,6 +11,10 @@ namespace GraphicRedactor.Classes
         public string Input { get; set; }
         SolidBrush brush;
         Font font;
+        public TextCl()
+        {
+            
+        }
         public TextCl(string input, SolidBrush brush, Font font)
         {
             Input = input;

@@ -34,6 +34,10 @@
             DrawTextBtn = new Button();
             textBox1 = new TextBox();
             Line = new Button();
+            ColorPicker = new Button();
+            SelectBtn = new Button();
+            label1 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -98,11 +102,53 @@
             Line.UseVisualStyleBackColor = true;
             Line.Click += Line_Click;
             // 
+            // ColorPicker
+            // 
+            ColorPicker.Location = new Point(875, 193);
+            ColorPicker.Name = "ColorPicker";
+            ColorPicker.Size = new Size(75, 23);
+            ColorPicker.TabIndex = 6;
+            ColorPicker.Text = "Color";
+            ColorPicker.UseVisualStyleBackColor = true;
+            ColorPicker.Click += ColorPicker_Click;
+            // 
+            // SelectBtn
+            // 
+            SelectBtn.Location = new Point(875, 229);
+            SelectBtn.Name = "SelectBtn";
+            SelectBtn.Size = new Size(75, 23);
+            SelectBtn.TabIndex = 7;
+            SelectBtn.Text = "Select";
+            SelectBtn.UseVisualStyleBackColor = true;
+            SelectBtn.Click += SelectBtn_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(884, 294);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 8;
+            label1.Text = "label1";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(884, 318);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 9;
+            label2.Text = "label2";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(982, 553);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(SelectBtn);
+            Controls.Add(ColorPicker);
             Controls.Add(Line);
             Controls.Add(textBox1);
             Controls.Add(DrawTextBtn);
@@ -124,5 +170,9 @@
         private Button DrawTextBtn;
         private TextBox textBox1;
         private Button Line;
+        private Button ColorPicker;
+        private Button SelectBtn;
+        private Label label1;
+        private Label label2;
     }
 }
