@@ -34,14 +34,17 @@
             DrawTextBtn = new Button();
             textBox1 = new TextBox();
             Line = new Button();
+            ColorPickerBtn = new Button();
+            SelectBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(2, 2);
+            pictureBox1.Location = new Point(2, 3);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(841, 548);
+            pictureBox1.Size = new Size(1083, 731);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
@@ -53,9 +56,10 @@
             // 
             // Rectangle
             // 
-            Rectangle.Location = new Point(875, 12);
+            Rectangle.Location = new Point(1148, 3);
+            Rectangle.Margin = new Padding(3, 4, 3, 4);
             Rectangle.Name = "Rectangle";
-            Rectangle.Size = new Size(75, 23);
+            Rectangle.Size = new Size(86, 31);
             Rectangle.TabIndex = 1;
             Rectangle.Text = "Rectangle";
             Rectangle.UseVisualStyleBackColor = true;
@@ -63,9 +67,10 @@
             // 
             // Elipse
             // 
-            Elipse.Location = new Point(875, 41);
+            Elipse.Location = new Point(1148, 42);
+            Elipse.Margin = new Padding(3, 4, 3, 4);
             Elipse.Name = "Elipse";
-            Elipse.Size = new Size(75, 23);
+            Elipse.Size = new Size(86, 31);
             Elipse.TabIndex = 2;
             Elipse.Text = "Elipse";
             Elipse.UseVisualStyleBackColor = true;
@@ -73,9 +78,10 @@
             // 
             // DrawTextBtn
             // 
-            DrawTextBtn.Location = new Point(875, 125);
+            DrawTextBtn.Location = new Point(1148, 120);
+            DrawTextBtn.Margin = new Padding(3, 4, 3, 4);
             DrawTextBtn.Name = "DrawTextBtn";
-            DrawTextBtn.Size = new Size(75, 23);
+            DrawTextBtn.Size = new Size(86, 31);
             DrawTextBtn.TabIndex = 3;
             DrawTextBtn.Text = "Text";
             DrawTextBtn.UseVisualStyleBackColor = true;
@@ -83,32 +89,57 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(861, 154);
+            textBox1.Location = new Point(1120, 159);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
+            textBox1.Size = new Size(114, 27);
             textBox1.TabIndex = 4;
             // 
             // Line
             // 
-            Line.Location = new Point(875, 70);
+            Line.Location = new Point(1148, 81);
+            Line.Margin = new Padding(3, 4, 3, 4);
             Line.Name = "Line";
-            Line.Size = new Size(75, 23);
+            Line.Size = new Size(86, 31);
             Line.TabIndex = 5;
             Line.Text = "Line";
             Line.UseVisualStyleBackColor = true;
             Line.Click += Line_Click;
             // 
+            // ColorPickerBtn
+            // 
+            ColorPickerBtn.Location = new Point(1140, 193);
+            ColorPickerBtn.Name = "ColorPickerBtn";
+            ColorPickerBtn.Size = new Size(94, 29);
+            ColorPickerBtn.TabIndex = 6;
+            ColorPickerBtn.Text = "ColorPicker";
+            ColorPickerBtn.UseVisualStyleBackColor = true;
+            ColorPickerBtn.Click += ColorPickerBtn_Click;
+            // 
+            // SelectBtn
+            // 
+            SelectBtn.Location = new Point(1148, 237);
+            SelectBtn.Name = "SelectBtn";
+            SelectBtn.Size = new Size(94, 29);
+            SelectBtn.TabIndex = 7;
+            SelectBtn.Text = "Select";
+            SelectBtn.UseVisualStyleBackColor = true;
+            SelectBtn.Click += SelectBtn_Click;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(982, 553);
+            ClientSize = new Size(1246, 737);
+            Controls.Add(SelectBtn);
+            Controls.Add(ColorPickerBtn);
             Controls.Add(Line);
             Controls.Add(textBox1);
             Controls.Add(DrawTextBtn);
             Controls.Add(Elipse);
             Controls.Add(Rectangle);
             Controls.Add(pictureBox1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -124,5 +155,7 @@
         private Button DrawTextBtn;
         private TextBox textBox1;
         private Button Line;
+        private Button ColorPickerBtn;
+        private Button SelectBtn;
     }
 }

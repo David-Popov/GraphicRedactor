@@ -13,6 +13,13 @@ namespace GraphicRedactor.Classes
         public int Width { get; set; }
         public int Height { get; set; }
 
+        public Color Color { get; set; }
+
         public abstract void Draw(Graphics g, Pen p);
+
+        public virtual bool ContainsPoint(Point point)
+        {
+            return false;
+        }
     }
 }
