@@ -13,6 +13,8 @@ namespace GraphicRedactor.Classes
         public int Width { get; set; }
         public int Height { get; set; }
 
+        public bool IsFocused { get; set; }
+
         public Color Color { get; set; }
 
         public abstract void Draw(Graphics g, Pen p);

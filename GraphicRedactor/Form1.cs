@@ -1,4 +1,6 @@
 using GraphicRedactor.Classes;
+using GraphicRedactor.Command;
+using GraphicRedactor.Tools;
 using System.Drawing;
 
 namespace GraphicRedactor
@@ -13,14 +15,16 @@ namespace GraphicRedactor
             pictureBox1.Image = bitmap;
         }
 
-        Bitmap bitmap;
-        private Graphics g;
+        Tool tool = new();
+        Shape shape = new RectangleCl();
         List<Shape> listOfShapes = new List<Shape>();
+        CommandCl command = new();
+        Bitmap bitmap;
         Pen pen = new Pen(Color.Black, 5);
-        Shape shape = new Elipse();
-        bool isDrawing = false;
         Point start;
         Point end;
+        bool isDrawing = false;
+        private Graphics g;
         string type = "rectangle";
         bool isSelecting = false;
 
@@ -28,17 +32,18 @@ namespace GraphicRedactor
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             isDrawing = true;
-            shape = CreateNewShape(type);
+            shape = tool.CreateNewShape(type);
             shape.Color = pen.Color;
             start.X = e.X;
             start.Y = e.Y;
             shape.StartLocation = start;
+
         }
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            pictureBox1.Refresh();
             if (isDrawing)
             {
+                pictureBox1.Refresh();
                 end.X = e.X;
                 end.Y = e.Y;
                 shape.Width = end.X - this.start.X;
@@ -67,7 +72,7 @@ namespace GraphicRedactor
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
             Point p = new Point(e.X, e.Y);
-            SelectShape(p);
+            command.SelectShape(p, listOfShapes);
             pictureBox1.Invalidate();
         }
 
@@ -79,21 +84,10 @@ namespace GraphicRedactor
             {
                 shape.Draw(gs, pen);
             }
-            if (isSelecting)
+            else if (isSelecting)
             {
-                DrawShapes();
+                command.ColorSelectedShape(listOfShapes, gs);
             }
-
-
-        }
-
-        public void DrawShapes()
-        {
-            for (int i = 0; i < listOfShapes.Count; i++)
-            {
-                listOfShapes[i].Draw(g, new Pen(listOfShapes[i].Color));
-            }
-
         }
 
         private void Elipse_Click(object sender, EventArgs e)
@@ -106,53 +100,9 @@ namespace GraphicRedactor
             type = "rectangle";
         }
 
-        private void DrawTextBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Line_Click(object sender, EventArgs e)
         {
             type = "line";
-        }
-
-        public void SelectShape(Point point)
-        {
-            for (int i = 0; i < listOfShapes.Count; i++)
-            {
-                if (listOfShapes[i].ContainsPoint(point))
-                {
-                    listOfShapes[i].Color = Color.Red;
-                    pen.Color = shape.Color;
-                    break;
-                }
-            }
-
-            pictureBox1.Invalidate();
-        }
-
-        private Shape CreateNewShape(string type)
-        {
-            Shape createdShape = null;
-
-            switch (type)
-            {
-                case "rectangle":
-                    createdShape = new RectangleCl();
-                    break;
-                case "elipse":
-                    createdShape = new Elipse();
-                    break;
-                case "line":
-                    createdShape = new Line();
-                    break;
-                case "text":
-                    createdShape = new TextCl(textBox1.Text, new SolidBrush(Color.Black), new Font("Arial", 30));
-                    break;
-                default: return createdShape;
-            }
-
-            return createdShape;
         }
 
         private void ColorPickerBtn_Click(object sender, EventArgs e)
@@ -164,6 +114,7 @@ namespace GraphicRedactor
 
         private void SelectBtn_Click(object sender, EventArgs e)
         {
+            isDrawing = false;
             isSelecting = true;
         }
     }
