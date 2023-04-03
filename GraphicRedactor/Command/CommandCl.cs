@@ -26,11 +26,11 @@ namespace GraphicRedactor.Command
             return null;
         }
 
-        public List<Shape> DeleteShape(Point point, List<Shape> shapes)
+        public List<Shape> DeleteShape(List<Shape> shapes)
         {
             for (int i = 0; i < shapes.Count; i++)
             {
-                if (shapes[i].ContainsPoint(point))
+                if (shapes[i].IsFocused == true)
                 {
                     shapes.Remove(shapes[i]);
                     break;
@@ -51,6 +51,14 @@ namespace GraphicRedactor.Command
         {
             for (int i = 0; i < shapes.Count; i++)
             {
+                if (shapes[i].IsFocused == true)
+                {
+                    shapes[i].Color = Color.Black;
+                    shapes[i].IsFocused = false;
+                }
+            }
+            for (int i = 0; i < shapes.Count; i++)
+            {
                 if (shapes[i].ContainsPoint(point))
                 {
                     shapes[i].Color = Color.Red;
@@ -62,8 +70,7 @@ namespace GraphicRedactor.Command
                     continue;
                 }
             }
+            
         }
-
-
     }
 }

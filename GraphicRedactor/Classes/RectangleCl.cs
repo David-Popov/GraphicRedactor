@@ -8,8 +8,6 @@ namespace GraphicRedactor.Classes
 {
     public class RectangleCl : Shape
     {
-
-
         public override bool ContainsPoint(Point point)
         {
             return point.X >= StartLocation.X && point.X <= EndLocation.X && point.Y >= StartLocation.Y && point.Y <= EndLocation.Y;

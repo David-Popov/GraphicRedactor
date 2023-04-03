@@ -36,6 +36,7 @@
             Line = new Button();
             ColorPickerBtn = new Button();
             SelectBtn = new Button();
+            DeleteBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -48,7 +49,6 @@
             pictureBox1.Size = new Size(1299, 784);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             pictureBox1.Paint += pictureBox1_Paint;
             pictureBox1.MouseClick += pictureBox1_MouseClick;
             pictureBox1.MouseDown += pictureBox1_MouseDown;
@@ -126,12 +126,23 @@
             SelectBtn.UseVisualStyleBackColor = true;
             SelectBtn.Click += SelectBtn_Click;
             // 
+            // DeleteBtn
+            // 
+            DeleteBtn.Location = new Point(1335, 273);
+            DeleteBtn.Name = "DeleteBtn";
+            DeleteBtn.Size = new Size(94, 29);
+            DeleteBtn.TabIndex = 8;
+            DeleteBtn.Text = "Delete";
+            DeleteBtn.UseVisualStyleBackColor = true;
+            DeleteBtn.Click += DeleteBtn_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1459, 789);
+            Controls.Add(DeleteBtn);
             Controls.Add(SelectBtn);
             Controls.Add(ColorPickerBtn);
             Controls.Add(Line);
@@ -158,5 +169,6 @@
         private Button Line;
         private Button ColorPickerBtn;
         private Button SelectBtn;
+        private Button DeleteBtn;
     }
 }

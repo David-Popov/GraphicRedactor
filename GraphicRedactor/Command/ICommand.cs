@@ -9,7 +9,7 @@ namespace GraphicRedactor.Command
 {
     public interface ICommand
     {
-        public List<Shape> DeleteShape(Point point, List<Shape> shapes);
+        public List<Shape> DeleteShape(List<Shape> shapes);
         public void SelectShape(Point point, List<Shape>shapes);
         public void MoveShape();
         public Shape CopyShape();

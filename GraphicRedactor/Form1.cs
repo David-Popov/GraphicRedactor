@@ -23,10 +23,11 @@ namespace GraphicRedactor
         Pen pen = new Pen(Color.Black, 5);
         Point start;
         Point end;
-        bool isDrawing = false;
         private Graphics g;
         string type = "rectangle";
         bool isSelecting = false;
+        bool isDrawing = false;
+        bool isDeleting = false;
 
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -43,7 +44,6 @@ namespace GraphicRedactor
         {
             if (isDrawing)
             {
-                pictureBox1.Refresh();
                 end.X = e.X;
                 end.Y = e.Y;
                 shape.Width = end.X - this.start.X;
@@ -55,22 +55,19 @@ namespace GraphicRedactor
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            isDrawing = false;
-            end.X = e.X;
-            end.Y = e.Y;
-            shape.EndLocation = end;
-            shape.Draw(g, pen);
-            listOfShapes.Add(shape);
+            if (!SelectBtn.Focused) {
+                end.X = e.X;
+                end.Y = e.Y;
+                shape.EndLocation = end;
+                shape.Draw(g, pen);
+                isDrawing = false;
+                listOfShapes.Add(shape);
+            }
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
+            isDrawing = false;
             Point p = new Point(e.X, e.Y);
             command.SelectShape(p, listOfShapes);
             pictureBox1.Invalidate();
@@ -87,6 +84,25 @@ namespace GraphicRedactor
             else if (isSelecting)
             {
                 command.ColorSelectedShape(listOfShapes, gs);
+            }
+            else if (isDeleting)
+            {
+                if (listOfShapes.Count == 0)
+                {
+                    pictureBox1.Image = null;
+                    pictureBox1.Update();
+                    isDeleting = false;
+                }
+                else
+                {
+                    g.Clear(pictureBox1.BackColor);
+                    foreach (Shape shape in listOfShapes)
+                    {
+                        shape.Draw(g, pen);
+                    }
+                    isDeleting = false;
+                    pictureBox1.Invalidate();
+                }
             }
         }
 
@@ -116,6 +132,14 @@ namespace GraphicRedactor
         {
             isDrawing = false;
             isSelecting = true;
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            isSelecting = false;
+            isDeleting = true;
+            listOfShapes = command.DeleteShape(listOfShapes);
+            pictureBox1.Invalidate();
         }
     }
 }
