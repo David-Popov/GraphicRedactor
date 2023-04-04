@@ -37,6 +37,8 @@
             ColorPickerBtn = new Button();
             SelectBtn = new Button();
             DeleteBtn = new Button();
+            Undo = new Button();
+            Redo = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -136,12 +138,34 @@
             DeleteBtn.UseVisualStyleBackColor = true;
             DeleteBtn.Click += DeleteBtn_Click;
             // 
+            // Undo
+            // 
+            Undo.Location = new Point(1335, 308);
+            Undo.Name = "Undo";
+            Undo.Size = new Size(94, 29);
+            Undo.TabIndex = 9;
+            Undo.Text = "Undo";
+            Undo.UseVisualStyleBackColor = true;
+            Undo.Click += Undo_Click;
+            // 
+            // Redo
+            // 
+            Redo.Location = new Point(1335, 343);
+            Redo.Name = "Redo";
+            Redo.Size = new Size(94, 29);
+            Redo.TabIndex = 10;
+            Redo.Text = "Redo";
+            Redo.UseVisualStyleBackColor = true;
+            Redo.Click += Redo_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1459, 789);
+            Controls.Add(Redo);
+            Controls.Add(Undo);
             Controls.Add(DeleteBtn);
             Controls.Add(SelectBtn);
             Controls.Add(ColorPickerBtn);
@@ -170,5 +194,7 @@
         private Button ColorPickerBtn;
         private Button SelectBtn;
         private Button DeleteBtn;
+        private Button Undo;
+        private Button Redo;
     }
 }

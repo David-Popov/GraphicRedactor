@@ -13,7 +13,7 @@ namespace GraphicRedactor.Command
         public void SelectShape(Point point, List<Shape>shapes);
         public void MoveShape();
         public Shape CopyShape();
-
         public void ColorSelectedShape(List<Shape> shapes,Graphics g);
+        public void Fill(Shape shape);
     }
 }

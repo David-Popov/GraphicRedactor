@@ -43,6 +43,11 @@ namespace GraphicRedactor.Command
             return shapes;
         }
 
+        public void Fill(Shape shape)
+        {
+            throw new NotImplementedException();
+        }
+
         public void MoveShape()
         {
         }

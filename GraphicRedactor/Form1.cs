@@ -18,9 +18,11 @@ namespace GraphicRedactor
         Tool tool = new();
         Shape shape = new RectangleCl();
         List<Shape> listOfShapes = new List<Shape>();
+        Stack<List<Shape>> undoStack = new Stack<List<Shape>>();
+        Stack<List<Shape>> redoStack = new Stack<List<Shape>>();
         CommandCl command = new();
         Bitmap bitmap;
-        Pen pen = new Pen(Color.Black, 5);
+        Pen pen = new Pen(Color.Black, 10);
         Point start;
         Point end;
         private Graphics g;
@@ -28,6 +30,8 @@ namespace GraphicRedactor
         bool isSelecting = false;
         bool isDrawing = false;
         bool isDeleting = false;
+        bool isDoingUndo = false;
+        bool isDoingRedo = false;
 
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -55,13 +59,15 @@ namespace GraphicRedactor
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (!SelectBtn.Focused) {
+            if (!SelectBtn.Focused)
+            {
                 end.X = e.X;
                 end.Y = e.Y;
                 shape.EndLocation = end;
                 shape.Draw(g, pen);
                 isDrawing = false;
                 listOfShapes.Add(shape);
+                undoStack.Push(new List<Shape>(listOfShapes));
             }
         }
 
@@ -104,6 +110,24 @@ namespace GraphicRedactor
                     pictureBox1.Invalidate();
                 }
             }
+            else if (isDoingUndo)
+            {
+                if (undoStack.Count == 0)
+                {
+                    return;
+                }
+                else
+                {
+                    var list = undoStack.Peek();
+                    g.Clear(pictureBox1.BackColor);
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        list[i].Draw(g, pen);
+                    }
+                    isDoingUndo = false;
+                    pictureBox1.Invalidate();
+                }
+            }
         }
 
         private void Elipse_Click(object sender, EventArgs e)
@@ -140,6 +164,42 @@ namespace GraphicRedactor
             isDeleting = true;
             listOfShapes = command.DeleteShape(listOfShapes);
             pictureBox1.Invalidate();
+        }
+
+        private void Undo_Click(object sender, EventArgs e)
+        {
+            isDoingUndo = true;
+
+            if (undoStack.Count == 0)
+            {
+                pictureBox1.Invalidate();
+                Undo.Enabled = false;
+                return;
+            }
+            else
+            {
+                var currState = undoStack.Pop();
+                redoStack.Push(new List<Shape>(currState));
+                pictureBox1.Invalidate();
+            }
+
+
+        }
+
+        private void Redo_Click(object sender, EventArgs e)
+        {
+            isDoingUndo = true;
+
+            if (redoStack.Count == 0)
+            {
+                return;
+            }
+            else
+            {
+                var currState = redoStack.Pop();
+                undoStack.Push(new List<Shape>(listOfShapes));
+                pictureBox1.Invalidate();
+            }
         }
     }
 }
