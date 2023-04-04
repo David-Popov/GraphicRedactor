@@ -89,9 +89,9 @@ namespace GraphicRedactor
             {
                 if (listOfShapes.Count == 0)
                 {
-                    pictureBox1.Image = null;
-                    pictureBox1.Update();
+                    g.Clear(pictureBox1.BackColor);
                     isDeleting = false;
+                    pictureBox1.Invalidate();
                 }
                 else
                 {
