@@ -93,40 +93,13 @@ namespace GraphicRedactor
             }
             else if (isDeleting)
             {
-                if (listOfShapes.Count == 0)
-                {
-                    g.Clear(pictureBox1.BackColor);
-                    isDeleting = false;
-                    pictureBox1.Invalidate();
-                }
-                else
-                {
-                    g.Clear(pictureBox1.BackColor);
-                    foreach (Shape shape in listOfShapes)
-                    {
-                        shape.Draw(g, pen);
-                    }
-                    isDeleting = false;
-                    pictureBox1.Invalidate();
-                }
+                tool.OnDelete(listOfShapes, g, pictureBox1, pen);
+                isDeleting = false;
             }
             else if (isDoingUndo)
             {
-                if (undoStack.Count == 0)
-                {
-                    return;
-                }
-                else
-                {
-                    var list = undoStack.Peek();
-                    g.Clear(pictureBox1.BackColor);
-                    for (int i = 0; i < list.Count; i++)
-                    {
-                        list[i].Draw(g, pen);
-                    }
-                    isDoingUndo = false;
-                    pictureBox1.Invalidate();
-                }
+                tool.OnUndoRedoOperation(undoStack, g, pictureBox1, pen);
+                isDoingUndo = false;
             }
         }
 
@@ -162,44 +135,25 @@ namespace GraphicRedactor
         {
             isSelecting = false;
             isDeleting = true;
-            listOfShapes = command.DeleteShape(listOfShapes);
+            listOfShapes = command.DeleteShape(listOfShapes, undoStack);
             pictureBox1.Invalidate();
         }
 
         private void Undo_Click(object sender, EventArgs e)
         {
             isDoingUndo = true;
-
-            if (undoStack.Count == 0)
-            {
-                pictureBox1.Invalidate();
-                Undo.Enabled = false;
-                return;
-            }
-            else
-            {
-                var currState = undoStack.Pop();
-                redoStack.Push(new List<Shape>(currState));
-                pictureBox1.Invalidate();
-            }
-
+            redoStack.Push(new List<Shape>(listOfShapes));
+            listOfShapes = undoStack.Pop();
+            pictureBox1.Invalidate();
 
         }
 
         private void Redo_Click(object sender, EventArgs e)
         {
             isDoingUndo = true;
-
-            if (redoStack.Count == 0)
-            {
-                return;
-            }
-            else
-            {
-                var currState = redoStack.Pop();
-                undoStack.Push(new List<Shape>(listOfShapes));
-                pictureBox1.Invalidate();
-            }
+            undoStack.Push(new List<Shape>(listOfShapes));
+            listOfShapes = redoStack.Pop();
+            pictureBox1.Invalidate();
         }
     }
 }
