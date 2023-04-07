@@ -9,14 +9,15 @@ namespace GraphicRedactor.Command
 {
     public class Select : CommandCl
     {
-        public override void ColorSelectedShape(List<Shape> shapes, Graphics g)
+        public override void ColorSelectedShape(List<Shape> shapes, Graphics g, PictureBox pictureBox1)
         {
             var selectedShape = shapes.Where(x => x.IsFocused == true || x.Color == Color.Red).FirstOrDefault();
             if (selectedShape == null)
             {
                 return;
             }
-            selectedShape.Draw(g, new Pen(selectedShape.Color));
+            selectedShape.Draw(g);
+            pictureBox1.Invalidate();
         }
 
         public override void SelectShape(Point point, List<Shape> shapes)

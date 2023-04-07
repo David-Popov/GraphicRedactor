@@ -31,13 +31,11 @@ namespace GraphicRedactor.Tools
 
             return createdShape;
         }
-
-        public void OnDelete(List<Shape> list,Graphics g, PictureBox pictureBox1,Pen pen)
+        public void RerenderShape(List<Shape> list,Graphics g, PictureBox pictureBox1,Pen pen)
         {
             if (list.Count == 0)
             {
                 g.Clear(pictureBox1.BackColor);
-               // isDeleting = false;
                 pictureBox1.Invalidate();
             }
             else
@@ -45,25 +43,7 @@ namespace GraphicRedactor.Tools
                 g.Clear(pictureBox1.BackColor);
                 foreach (Shape shape in list)
                 {
-                    shape.Draw(g, pen);
-                }
-               // isDeleting = false;
-                pictureBox1.Invalidate();
-            }
-        }
-        public void OnUndoRedoOperation(Stack<List<Shape>> undoStack,Graphics g,PictureBox pictureBox1, Pen pen) 
-        {
-            if (undoStack.Count == 0)
-            {
-                return;
-            }
-            else
-            {
-                var list = undoStack.Peek();
-                g.Clear(pictureBox1.BackColor);
-                for (int i = 0; i < list.Count; i++)
-                {
-                    list[i].Draw(g, pen);
+                    shape.Draw(g);
                 }
                 pictureBox1.Invalidate();
             }

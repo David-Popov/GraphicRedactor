@@ -10,5 +10,6 @@ namespace GraphicRedactor.Tools
     public interface ITool
     {
         public Shape CreateNewShape(string type);
+        public void RerenderShape(List<Shape> list, Graphics g, PictureBox pictureBox1, Pen pen);
     }
 }

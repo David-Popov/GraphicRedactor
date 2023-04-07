@@ -16,8 +16,11 @@ namespace GraphicRedactor.Classes
         public bool IsFocused { get; set; }
 
         public Color Color { get; set; }
+        public Color BorderColor { get; set; } = Color.DarkGray;
 
-        public abstract void Draw(Graphics g, Pen p);
+        public Color PreviousColor { get; set; }
+
+        public abstract void Draw(Graphics g);
 
         public virtual bool ContainsPoint(Point point)
         {

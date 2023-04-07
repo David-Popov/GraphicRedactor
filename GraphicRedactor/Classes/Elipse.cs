@@ -12,9 +12,12 @@ namespace GraphicRedactor.Classes
         {
             return point.X >= StartLocation.X && point.X <= EndLocation.X && point.Y >= StartLocation.Y && point.Y <= EndLocation.Y;
         }
-        public override void Draw(Graphics g, Pen p)
+        public override void Draw(Graphics g)
         {
-            g.DrawEllipse(p, this.StartLocation.X, this.StartLocation.Y, this.Width,this.Height);
+            g.FillEllipse(new SolidBrush(this.Color), StartLocation.X, StartLocation.Y, this.Width, this.Height);
+            g.DrawEllipse(new Pen(this.BorderColor,5), this.StartLocation.X, this.StartLocation.Y, this.Width,this.Height);
         }
+
+        
     }
 }

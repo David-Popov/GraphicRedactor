@@ -12,9 +12,9 @@ namespace GraphicRedactor.Classes
         {
             return point.X >= StartLocation.X && point.X <= EndLocation.X && point.Y >= StartLocation.Y && point.Y <= EndLocation.Y;
         }
-        public override void Draw(Graphics g, Pen p)
+        public override void Draw(Graphics g)
         {
-            g.DrawLine(p,this.StartLocation,this.EndLocation);
+            g.DrawLine(new Pen(this.Color,8),this.StartLocation,this.EndLocation);
         }
     }
 }

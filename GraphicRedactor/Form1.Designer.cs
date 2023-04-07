@@ -39,6 +39,7 @@
             DeleteBtn = new Button();
             Undo = new Button();
             Redo = new Button();
+            FillBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -158,12 +159,23 @@
             Redo.UseVisualStyleBackColor = true;
             Redo.Click += Redo_Click;
             // 
+            // FillBtn
+            // 
+            FillBtn.Location = new Point(1335, 378);
+            FillBtn.Name = "FillBtn";
+            FillBtn.Size = new Size(94, 29);
+            FillBtn.TabIndex = 11;
+            FillBtn.Text = "Fill";
+            FillBtn.UseVisualStyleBackColor = true;
+            FillBtn.Click += FillBtn_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1459, 789);
+            Controls.Add(FillBtn);
             Controls.Add(Redo);
             Controls.Add(Undo);
             Controls.Add(DeleteBtn);
@@ -196,5 +208,6 @@
         private Button DeleteBtn;
         private Button Undo;
         private Button Redo;
+        private Button FillBtn;
     }
 }

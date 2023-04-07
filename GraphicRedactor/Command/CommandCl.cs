@@ -11,21 +11,15 @@ namespace GraphicRedactor.Command
 {
     public class CommandCl : ICommand
     {
-        public virtual void ColorSelectedShape(List<Shape> shapes,Graphics g)
+        public virtual void ColorSelectedShape(List<Shape> shapes,Graphics g,PictureBox pictureBox1)
         {
             var selectedShape = shapes.Where(x => x.IsFocused == true || x.Color == Color.Red).FirstOrDefault();
             if (selectedShape == null)
             {
                 return;
             }
-            selectedShape.Draw(g, new Pen(selectedShape.Color));
+            selectedShape.Draw(g);
         }
-
-        public Shape CopyShape()
-        {
-            return null;
-        }
-
         public virtual List<Shape> DeleteShape(List<Shape> shapes, Stack<List<Shape>> undoStack)
         {
             for (int i = 0; i < shapes.Count; i++)
@@ -33,6 +27,7 @@ namespace GraphicRedactor.Command
                 if (shapes[i].IsFocused == true)
                 {
                     shapes[i].IsFocused = false;
+                    shapes[i].BorderColor = Color.Gray;
                     undoStack.Push(new List<Shape>(shapes));
                     shapes.Remove(shapes[i]);
                     break;
@@ -44,23 +39,14 @@ namespace GraphicRedactor.Command
             }
             return shapes;
         }
-
-        public void Fill(Shape shape)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void MoveShape()
-        {
-        }
-
         public virtual void SelectShape(Point point, List<Shape> shapes)
         {
             for (int i = 0; i < shapes.Count; i++)
             {
                 if (shapes[i].IsFocused == true)
                 {
-                    shapes[i].Color = Color.Black;
+                    shapes[i].Color = shapes[i].PreviousColor;
+                    shapes[i].BorderColor = Color.Gray;
                     shapes[i].IsFocused = false;
                 }
             }
@@ -68,7 +54,8 @@ namespace GraphicRedactor.Command
             {
                 if (shapes[i].ContainsPoint(point))
                 {
-                    shapes[i].Color = Color.Red;
+                    shapes[i].PreviousColor = shapes[i].Color;
+                    shapes[i].BorderColor = Color.Red;
                     shapes[i].IsFocused = true;
                     break;
                 }
@@ -79,5 +66,12 @@ namespace GraphicRedactor.Command
             }
             
         }
+        public void Fill(Shape shape)
+        {
+        }
+        public void MoveShape()
+        {
+        }
+
     }
 }

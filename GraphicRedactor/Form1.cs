@@ -30,8 +30,8 @@ namespace GraphicRedactor
         bool isSelecting = false;
         bool isDrawing = false;
         bool isDeleting = false;
-        bool isDoingUndo = false;
-        bool isDoingRedo = false;
+        bool isDoingUndoRedo = false;
+        bool isFilling = false;
 
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -39,6 +39,7 @@ namespace GraphicRedactor
             isDrawing = true;
             shape = tool.CreateNewShape(type);
             shape.Color = pen.Color;
+            //shape.BorderColor = pen.Color;
             start.X = e.X;
             start.Y = e.Y;
             shape.StartLocation = start;
@@ -57,6 +58,8 @@ namespace GraphicRedactor
             }
         }
 
+        //Select Line is not working to be fixed !!!!!
+
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             if (!SelectBtn.Focused)
@@ -64,7 +67,7 @@ namespace GraphicRedactor
                 end.X = e.X;
                 end.Y = e.Y;
                 shape.EndLocation = end;
-                shape.Draw(g, pen);
+                shape.Draw(g);
                 isDrawing = false;
                 listOfShapes.Add(shape);
                 undoStack.Push(new List<Shape>(listOfShapes));
@@ -75,7 +78,11 @@ namespace GraphicRedactor
         {
             isDrawing = false;
             Point p = new Point(e.X, e.Y);
-            command.SelectShape(p, listOfShapes);
+            if (isSelecting)
+            {
+                command.SelectShape(p, listOfShapes);
+                pictureBox1.Invalidate();
+            }
             pictureBox1.Invalidate();
         }
 
@@ -85,21 +92,21 @@ namespace GraphicRedactor
 
             if (isDrawing)
             {
-                shape.Draw(gs, pen);
+                shape.Draw(gs);
             }
             else if (isSelecting)
             {
-                command.ColorSelectedShape(listOfShapes, gs);
+                command.ColorSelectedShape(listOfShapes, gs, pictureBox1);
             }
             else if (isDeleting)
             {
-                tool.OnDelete(listOfShapes, g, pictureBox1, pen);
+                tool.RerenderShape(listOfShapes, g, pictureBox1, pen);
                 isDeleting = false;
             }
-            else if (isDoingUndo)
+            else if (isDoingUndoRedo)
             {
-                tool.OnUndoRedoOperation(undoStack, g, pictureBox1, pen);
-                isDoingUndo = false;
+                tool.RerenderShape(listOfShapes, g, pictureBox1, pen);
+                isDoingUndoRedo = false;
             }
         }
 
@@ -133,6 +140,7 @@ namespace GraphicRedactor
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
+            isDrawing = false;
             isSelecting = false;
             isDeleting = true;
             listOfShapes = command.DeleteShape(listOfShapes, undoStack);
@@ -141,7 +149,7 @@ namespace GraphicRedactor
 
         private void Undo_Click(object sender, EventArgs e)
         {
-            isDoingUndo = true;
+            isDoingUndoRedo = true;
             redoStack.Push(new List<Shape>(listOfShapes));
             listOfShapes = undoStack.Pop();
             pictureBox1.Invalidate();
@@ -150,10 +158,15 @@ namespace GraphicRedactor
 
         private void Redo_Click(object sender, EventArgs e)
         {
-            isDoingUndo = true;
+            isDoingUndoRedo = true;
             undoStack.Push(new List<Shape>(listOfShapes));
             listOfShapes = redoStack.Pop();
             pictureBox1.Invalidate();
+        }
+
+        private void FillBtn_Click(object sender, EventArgs e)
+        {
+            isFilling = true;
         }
     }
 }

@@ -12,8 +12,7 @@ namespace GraphicRedactor.Command
         public List<Shape> DeleteShape(List<Shape> shapes, Stack<List<Shape>> undoStack);
         public void SelectShape(Point point, List<Shape>shapes);
         public void MoveShape();
-        public Shape CopyShape();
-        public void ColorSelectedShape(List<Shape> shapes,Graphics g);
+        public void ColorSelectedShape(List<Shape> shapes,Graphics g,PictureBox pictureBox1);
         public void Fill(Shape shape);
     }
 }
