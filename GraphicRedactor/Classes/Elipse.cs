@@ -18,6 +18,17 @@ namespace GraphicRedactor.Classes
             g.DrawEllipse(new Pen(this.BorderColor,5), this.StartLocation.X, this.StartLocation.Y, this.Width,this.Height);
         }
 
-        
+        public override Shape CloneShape()
+        {
+            var shapeCopy = new Elipse();
+            shapeCopy.Color = this.Color;
+            shapeCopy.BorderColor = this.BorderColor;
+            shapeCopy.IsFocused = this.IsFocused;
+            shapeCopy.Width = this.Width;
+            shapeCopy.Height = this.Height;
+            shapeCopy.EndLocation = this.EndLocation;
+            shapeCopy.StartLocation = this.StartLocation;
+            return shapeCopy;
+        }
     }
 }

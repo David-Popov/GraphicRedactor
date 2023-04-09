@@ -26,5 +26,7 @@ namespace GraphicRedactor.Classes
         {
             return false;
         }
+
+        public abstract Shape CloneShape();
     }
 }

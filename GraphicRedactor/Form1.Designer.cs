@@ -28,28 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             pictureBox1 = new PictureBox();
             Rectangle = new Button();
             Elipse = new Button();
-            DrawTextBtn = new Button();
-            textBox1 = new TextBox();
             Line = new Button();
             ColorPickerBtn = new Button();
             SelectBtn = new Button();
             DeleteBtn = new Button();
             Undo = new Button();
             Redo = new Button();
+            panel1 = new Panel();
+            pictureBox2 = new PictureBox();
+            panel2 = new Panel();
+            label1 = new Label();
+            panel3 = new Panel();
+            label2 = new Label();
             FillBtn = new Button();
+            MoveBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
             // 
             pictureBox1.BackColor = SystemColors.ControlLightLight;
-            pictureBox1.Location = new Point(2, 3);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Location = new Point(261, 54);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1299, 784);
+            pictureBox1.Size = new Size(1517, 719);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             pictureBox1.Paint += pictureBox1_Paint;
@@ -60,139 +69,252 @@
             // 
             // Rectangle
             // 
-            Rectangle.Location = new Point(1335, 13);
-            Rectangle.Margin = new Padding(3, 4, 3, 4);
+            Rectangle.BackColor = SystemColors.ButtonHighlight;
+            Rectangle.Cursor = Cursors.Hand;
+            Rectangle.FlatStyle = FlatStyle.Flat;
+            Rectangle.ForeColor = SystemColors.ActiveCaptionText;
+            Rectangle.Location = new Point(55, 197);
+            Rectangle.Margin = new Padding(0);
             Rectangle.Name = "Rectangle";
-            Rectangle.Size = new Size(86, 31);
-            Rectangle.TabIndex = 1;
+            Rectangle.Size = new Size(150, 40);
+            Rectangle.TabIndex = 2;
             Rectangle.Text = "Rectangle";
-            Rectangle.UseVisualStyleBackColor = true;
+            Rectangle.UseVisualStyleBackColor = false;
             Rectangle.Click += Rectangle_Click;
             // 
             // Elipse
             // 
-            Elipse.Location = new Point(1335, 52);
-            Elipse.Margin = new Padding(3, 4, 3, 4);
+            Elipse.BackColor = SystemColors.ButtonHighlight;
+            Elipse.Cursor = Cursors.Hand;
+            Elipse.FlatStyle = FlatStyle.Flat;
+            Elipse.ForeColor = SystemColors.ActiveCaptionText;
+            Elipse.Location = new Point(55, 237);
+            Elipse.Margin = new Padding(0);
             Elipse.Name = "Elipse";
-            Elipse.Size = new Size(86, 31);
+            Elipse.Size = new Size(150, 40);
             Elipse.TabIndex = 2;
             Elipse.Text = "Elipse";
-            Elipse.UseVisualStyleBackColor = true;
+            Elipse.UseVisualStyleBackColor = false;
             Elipse.Click += Elipse_Click;
-            // 
-            // DrawTextBtn
-            // 
-            DrawTextBtn.Location = new Point(1335, 130);
-            DrawTextBtn.Margin = new Padding(3, 4, 3, 4);
-            DrawTextBtn.Name = "DrawTextBtn";
-            DrawTextBtn.Size = new Size(86, 31);
-            DrawTextBtn.TabIndex = 3;
-            DrawTextBtn.Text = "Text";
-            DrawTextBtn.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(1315, 169);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(114, 27);
-            textBox1.TabIndex = 4;
             // 
             // Line
             // 
-            Line.Location = new Point(1335, 91);
-            Line.Margin = new Padding(3, 4, 3, 4);
+            Line.BackColor = SystemColors.ButtonHighlight;
+            Line.Cursor = Cursors.Hand;
+            Line.FlatStyle = FlatStyle.Flat;
+            Line.ForeColor = SystemColors.ActiveCaptionText;
+            Line.Location = new Point(55, 277);
+            Line.Margin = new Padding(0);
             Line.Name = "Line";
-            Line.Size = new Size(86, 31);
-            Line.TabIndex = 5;
+            Line.Size = new Size(150, 40);
+            Line.TabIndex = 2;
             Line.Text = "Line";
-            Line.UseVisualStyleBackColor = true;
+            Line.UseVisualStyleBackColor = false;
             Line.Click += Line_Click;
             // 
             // ColorPickerBtn
             // 
-            ColorPickerBtn.Location = new Point(1335, 203);
+            ColorPickerBtn.BackColor = SystemColors.ButtonHighlight;
+            ColorPickerBtn.Cursor = Cursors.Hand;
+            ColorPickerBtn.FlatStyle = FlatStyle.Flat;
+            ColorPickerBtn.ForeColor = SystemColors.ActiveCaptionText;
+            ColorPickerBtn.Location = new Point(55, 317);
+            ColorPickerBtn.Margin = new Padding(0);
             ColorPickerBtn.Name = "ColorPickerBtn";
-            ColorPickerBtn.Size = new Size(86, 29);
+            ColorPickerBtn.Size = new Size(150, 40);
             ColorPickerBtn.TabIndex = 6;
             ColorPickerBtn.Text = "ColorPicker";
-            ColorPickerBtn.UseVisualStyleBackColor = true;
+            ColorPickerBtn.UseVisualStyleBackColor = false;
             ColorPickerBtn.Click += ColorPickerBtn_Click;
             // 
             // SelectBtn
             // 
-            SelectBtn.Location = new Point(1335, 238);
+            SelectBtn.BackColor = SystemColors.ButtonHighlight;
+            SelectBtn.Cursor = Cursors.Hand;
+            SelectBtn.FlatStyle = FlatStyle.Flat;
+            SelectBtn.ForeColor = SystemColors.ActiveCaptionText;
+            SelectBtn.Location = new Point(55, 357);
+            SelectBtn.Margin = new Padding(0);
             SelectBtn.Name = "SelectBtn";
-            SelectBtn.Size = new Size(94, 29);
+            SelectBtn.Size = new Size(150, 40);
             SelectBtn.TabIndex = 7;
             SelectBtn.Text = "Select";
-            SelectBtn.UseVisualStyleBackColor = true;
+            SelectBtn.UseVisualStyleBackColor = false;
             SelectBtn.Click += SelectBtn_Click;
             // 
             // DeleteBtn
             // 
-            DeleteBtn.Location = new Point(1335, 273);
+            DeleteBtn.BackColor = SystemColors.ButtonHighlight;
+            DeleteBtn.Cursor = Cursors.Hand;
+            DeleteBtn.FlatStyle = FlatStyle.Flat;
+            DeleteBtn.ForeColor = SystemColors.ActiveCaptionText;
+            DeleteBtn.Location = new Point(55, 397);
+            DeleteBtn.Margin = new Padding(0);
             DeleteBtn.Name = "DeleteBtn";
-            DeleteBtn.Size = new Size(94, 29);
+            DeleteBtn.Size = new Size(150, 40);
             DeleteBtn.TabIndex = 8;
             DeleteBtn.Text = "Delete";
-            DeleteBtn.UseVisualStyleBackColor = true;
+            DeleteBtn.UseVisualStyleBackColor = false;
             DeleteBtn.Click += DeleteBtn_Click;
             // 
             // Undo
             // 
-            Undo.Location = new Point(1335, 308);
+            Undo.BackColor = SystemColors.ButtonHighlight;
+            Undo.Cursor = Cursors.Hand;
+            Undo.FlatStyle = FlatStyle.Flat;
+            Undo.ForeColor = SystemColors.ActiveCaptionText;
+            Undo.Location = new Point(55, 437);
+            Undo.Margin = new Padding(0);
             Undo.Name = "Undo";
-            Undo.Size = new Size(94, 29);
+            Undo.Size = new Size(150, 40);
             Undo.TabIndex = 9;
             Undo.Text = "Undo";
-            Undo.UseVisualStyleBackColor = true;
+            Undo.UseVisualStyleBackColor = false;
             Undo.Click += Undo_Click;
             // 
             // Redo
             // 
-            Redo.Location = new Point(1335, 343);
+            Redo.BackColor = SystemColors.ButtonHighlight;
+            Redo.Cursor = Cursors.Hand;
+            Redo.FlatStyle = FlatStyle.Flat;
+            Redo.ForeColor = SystemColors.ActiveCaptionText;
+            Redo.Location = new Point(55, 477);
+            Redo.Margin = new Padding(0);
             Redo.Name = "Redo";
-            Redo.Size = new Size(94, 29);
+            Redo.Size = new Size(150, 40);
             Redo.TabIndex = 10;
             Redo.Text = "Redo";
-            Redo.UseVisualStyleBackColor = true;
+            Redo.UseVisualStyleBackColor = false;
             Redo.Click += Redo_Click;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.CornflowerBlue;
+            panel1.Controls.Add(MoveBtn);
+            panel1.Controls.Add(pictureBox2);
+            panel1.Controls.Add(Rectangle);
+            panel1.Controls.Add(Line);
+            panel1.Controls.Add(Elipse);
+            panel1.Controls.Add(FillBtn);
+            panel1.Controls.Add(ColorPickerBtn);
+            panel1.Controls.Add(Redo);
+            panel1.Controls.Add(SelectBtn);
+            panel1.Controls.Add(Undo);
+            panel1.Controls.Add(DeleteBtn);
+            panel1.Dock = DockStyle.Left;
+            panel1.ForeColor = SystemColors.ControlLight;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(258, 869);
+            panel1.TabIndex = 12;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackgroundImage = Properties.Resources.pen_1_;
+            pictureBox2.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox2.Cursor = Cursors.Hand;
+            pictureBox2.Location = new Point(0, 0);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(258, 145);
+            pictureBox2.TabIndex = 12;
+            pictureBox2.TabStop = false;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.CornflowerBlue;
+            panel2.Controls.Add(label1);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(258, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1520, 59);
+            panel2.TabIndex = 13;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Arial Rounded MT Bold", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ButtonHighlight;
+            label1.Location = new Point(566, 5);
+            label1.Name = "label1";
+            label1.Size = new Size(289, 46);
+            label1.TabIndex = 0;
+            label1.Text = "David Studios";
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.CornflowerBlue;
+            panel3.Controls.Add(label2);
+            panel3.Dock = DockStyle.Bottom;
+            panel3.Location = new Point(258, 779);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1520, 90);
+            panel3.TabIndex = 14;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.ButtonHighlight;
+            label2.Location = new Point(0, 10);
+            label2.Name = "label2";
+            label2.Size = new Size(68, 23);
+            label2.TabIndex = 0;
+            label2.Text = "X:  ; Y:";
             // 
             // FillBtn
             // 
-            FillBtn.Location = new Point(1335, 378);
+            FillBtn.BackColor = SystemColors.ButtonHighlight;
+            FillBtn.Cursor = Cursors.Hand;
+            FillBtn.FlatStyle = FlatStyle.Flat;
+            FillBtn.ForeColor = SystemColors.ActiveCaptionText;
+            FillBtn.Location = new Point(55, 517);
+            FillBtn.Margin = new Padding(0);
             FillBtn.Name = "FillBtn";
-            FillBtn.Size = new Size(94, 29);
+            FillBtn.Size = new Size(150, 40);
             FillBtn.TabIndex = 11;
             FillBtn.Text = "Fill";
-            FillBtn.UseVisualStyleBackColor = true;
+            FillBtn.UseVisualStyleBackColor = false;
             FillBtn.Click += FillBtn_Click;
+            // 
+            // MoveBtn
+            // 
+            MoveBtn.BackColor = SystemColors.ButtonHighlight;
+            MoveBtn.Cursor = Cursors.Hand;
+            MoveBtn.FlatStyle = FlatStyle.Flat;
+            MoveBtn.ForeColor = SystemColors.ActiveCaptionText;
+            MoveBtn.Location = new Point(55, 557);
+            MoveBtn.Margin = new Padding(0);
+            MoveBtn.Name = "MoveBtn";
+            MoveBtn.Size = new Size(150, 40);
+            MoveBtn.TabIndex = 13;
+            MoveBtn.Text = "Move";
+            MoveBtn.UseVisualStyleBackColor = false;
+            MoveBtn.Click += MoveBtn_Click;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(9F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaptionText;
-            ClientSize = new Size(1459, 789);
-            Controls.Add(FillBtn);
-            Controls.Add(Redo);
-            Controls.Add(Undo);
-            Controls.Add(DeleteBtn);
-            Controls.Add(SelectBtn);
-            Controls.Add(ColorPickerBtn);
-            Controls.Add(Line);
-            Controls.Add(textBox1);
-            Controls.Add(DrawTextBtn);
-            Controls.Add(Elipse);
-            Controls.Add(Rectangle);
+            BackColor = SystemColors.ButtonHighlight;
+            ClientSize = new Size(1778, 869);
+            Controls.Add(panel3);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
             Controls.Add(pictureBox1);
-            Margin = new Padding(3, 4, 3, 4);
+            Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
-            Text = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "David's Redactor";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -200,14 +322,19 @@
         private PictureBox pictureBox1;
         private Button Rectangle;
         private Button Elipse;
-        private Button DrawTextBtn;
-        private TextBox textBox1;
         private Button Line;
         private Button ColorPickerBtn;
         private Button SelectBtn;
         private Button DeleteBtn;
         private Button Undo;
         private Button Redo;
+        private Panel panel1;
+        private Panel panel2;
+        private Panel panel3;
+        private Label label1;
+        private PictureBox pictureBox2;
+        private Label label2;
+        private Button MoveBtn;
         private Button FillBtn;
     }
 }

@@ -32,14 +32,13 @@ namespace GraphicRedactor
         bool isDeleting = false;
         bool isDoingUndoRedo = false;
         bool isFilling = false;
-
+        bool isMoving = false;
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             isDrawing = true;
             shape = tool.CreateNewShape(type);
             shape.Color = pen.Color;
-            //shape.BorderColor = pen.Color;
             start.X = e.X;
             start.Y = e.Y;
             shape.StartLocation = start;
@@ -47,6 +46,8 @@ namespace GraphicRedactor
         }
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
+            label2.Text = $"X: {e.X}; Y: {e.Y}";
+            var selectedShape = listOfShapes.Where(x => x.IsFocused == true).FirstOrDefault();
             if (isDrawing)
             {
                 end.X = e.X;
@@ -62,7 +63,7 @@ namespace GraphicRedactor
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (!SelectBtn.Focused)
+            if (!SelectBtn.Focused && !FillBtn.Focused)
             {
                 end.X = e.X;
                 end.Y = e.Y;
@@ -82,6 +83,12 @@ namespace GraphicRedactor
             {
                 command.SelectShape(p, listOfShapes);
                 pictureBox1.Invalidate();
+            }
+            else if (isFilling)
+            {
+                listOfShapes = command.Fill(listOfShapes, pen.Color, p);
+                undoStack.Push(new List<Shape>(listOfShapes));
+                tool.RerenderShape(listOfShapes, g, pictureBox1, pen);
             }
             pictureBox1.Invalidate();
         }
@@ -150,8 +157,14 @@ namespace GraphicRedactor
         private void Undo_Click(object sender, EventArgs e)
         {
             isDoingUndoRedo = true;
-            redoStack.Push(new List<Shape>(listOfShapes));
-            listOfShapes = undoStack.Pop();
+            redoStack.Push(undoStack.Pop());
+            if (undoStack.Count == 0)
+            {
+                g.Clear(pictureBox1.BackColor);
+                pictureBox1.Invalidate();
+                return;
+            }
+            listOfShapes = undoStack.Peek();
             pictureBox1.Invalidate();
 
         }
@@ -160,13 +173,24 @@ namespace GraphicRedactor
         {
             isDoingUndoRedo = true;
             undoStack.Push(new List<Shape>(listOfShapes));
+            if (redoStack.Count == 0)
+            {
+                return;
+            }
             listOfShapes = redoStack.Pop();
             pictureBox1.Invalidate();
         }
 
         private void FillBtn_Click(object sender, EventArgs e)
         {
+            isDrawing = false;
+            isSelecting = false;
             isFilling = true;
+        }
+
+        private void MoveBtn_Click(object sender, EventArgs e)
+        {
+            isMoving = true;
         }
     }
 }

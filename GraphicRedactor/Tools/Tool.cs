@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -48,5 +49,7 @@ namespace GraphicRedactor.Tools
                 pictureBox1.Invalidate();
             }
         }
+
+        
     }
 }

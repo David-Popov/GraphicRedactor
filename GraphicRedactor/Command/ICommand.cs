@@ -13,6 +13,6 @@ namespace GraphicRedactor.Command
         public void SelectShape(Point point, List<Shape>shapes);
         public void MoveShape();
         public void ColorSelectedShape(List<Shape> shapes,Graphics g,PictureBox pictureBox1);
-        public void Fill(Shape shape);
+        public List<Shape> Fill(List<Shape> list,Color color,Point point);
     }
 }

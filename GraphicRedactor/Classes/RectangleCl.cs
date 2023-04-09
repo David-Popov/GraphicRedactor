@@ -17,5 +17,18 @@ namespace GraphicRedactor.Classes
             g.FillRectangle(new SolidBrush(this.Color),this.StartLocation.X,this.StartLocation.Y,this.Width, this.Height);
             g.DrawRectangle(new Pen(this.BorderColor,5), this.StartLocation.X, this.StartLocation.Y, this.Width, this.Height);
         }
+
+        public override Shape CloneShape()
+        {
+            var shapeCopy = new RectangleCl();
+            shapeCopy.Color = this.Color;
+            shapeCopy.BorderColor = this.BorderColor;
+            shapeCopy.IsFocused = this.IsFocused;
+            shapeCopy.Width = this.Width;
+            shapeCopy.Height = this.Height;
+            shapeCopy.EndLocation = this.EndLocation;
+            shapeCopy.StartLocation = this.StartLocation;
+            return shapeCopy;
+        }
     }
 }
