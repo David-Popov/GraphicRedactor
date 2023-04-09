@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GraphicRedactor.Command
 {
-    public class Delete : CommandCl
+    public class DeleteCommand : CommandCl
     {
         public override List<Shape> DeleteShape(List<Shape> shapes,Stack<List<Shape>>undoStack)
         {
@@ -15,6 +15,9 @@ namespace GraphicRedactor.Command
             {
                 if (shapes[i].IsFocused == true)
                 {
+                    shapes[i].IsFocused = false;
+                    shapes[i].BorderColor = Color.Gray;
+                    undoStack.Push(new List<Shape>(shapes));
                     shapes.Remove(shapes[i]);
                     undoStack.Push(new List<Shape>(shapes));
                     break;
