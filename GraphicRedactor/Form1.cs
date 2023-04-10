@@ -13,7 +13,7 @@ namespace GraphicRedactor
             bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             g = Graphics.FromImage(bitmap);
             pictureBox1.Image = bitmap;
-            tool = new(g,pictureBox1,pen);
+            tool = new(g, pictureBox1, pen);
         }
 
         Tool tool;
@@ -26,6 +26,7 @@ namespace GraphicRedactor
         Pen pen = new Pen(Color.Black, 10);
         Point start;
         Point end;
+        Point point;
         private Graphics g;
         string type = "rectangle";
         bool isSelecting = false;
@@ -41,7 +42,6 @@ namespace GraphicRedactor
             start.X = e.X;
             start.Y = e.Y;
             shape.StartLocation = start;
-
         }
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
@@ -54,6 +54,13 @@ namespace GraphicRedactor
                 shape.Width = end.X - this.start.X;
                 shape.Height = end.Y - this.start.Y;
                 shape.EndLocation = end;
+                pictureBox1.Invalidate();
+            }
+            else if (isMoving == true)
+            {
+                command = new MoveCommand();
+                selectedShape = command.MoveShape(selectedShape, start);
+                point = new Point(e.X, e.Y);
                 pictureBox1.Invalidate();
             }
         }
@@ -104,16 +111,6 @@ namespace GraphicRedactor
             {
                 command.ColorSelectedShape(listOfShapes, gs, pictureBox1);
             }
-            //else if (isDeleting)
-            //{
-            //    tool.RerenderShape(listOfShapes);
-            //    isDeleting = false;
-            //}
-            //else if (isDoingUndoRedo)
-            //{
-            //    tool.RerenderShape(listOfShapes, g, pictureBox1, pen);
-            //    isDoingUndoRedo = false;
-            //}
         }
 
         private void Elipse_Click(object sender, EventArgs e)
@@ -151,12 +148,10 @@ namespace GraphicRedactor
             command = new DeleteCommand();
             listOfShapes = command.DeleteShape(listOfShapes, undoStack);
             tool.RerenderShape(listOfShapes);
-           // pictureBox1.Invalidate();
         }
 
         private void Undo_Click(object sender, EventArgs e)
         {
-            //isDoingUndoRedo = true;
             listOfShapes = tool.UndoOperation(undoStack, redoStack, listOfShapes, pictureBox1);
             if (listOfShapes.Count == 0 && redoStack.Count > 0)
             {
@@ -165,21 +160,10 @@ namespace GraphicRedactor
                 Redo.Enabled = true;
             }
             tool.RerenderShape(listOfShapes);
-            //redoStack.Push(undoStack.Pop());
-            //if (undoStack.Count == 0)
-            //{
-            //    g.Clear(pictureBox1.BackColor);
-            //    pictureBox1.Invalidate();
-            //    return;
-            //}
-            //listOfShapes = undoStack.Peek();
-            //pictureBox1.Invalidate();
-
         }
 
         private void Redo_Click(object sender, EventArgs e)
         {
-            //isDoingUndoRedo = true;
             listOfShapes = tool.RedoOperation(undoStack, redoStack, listOfShapes, pictureBox1);
             if (redoStack.Count == 0)
             {
@@ -188,13 +172,6 @@ namespace GraphicRedactor
                 Redo.Enabled = false;
             }
             tool.RerenderShape(listOfShapes);
-            //undoStack.Push(new List<Shape>(listOfShapes));
-            //if (redoStack.Count == 0)
-            //{
-            //    return;
-            //}
-            //listOfShapes = redoStack.Pop();
-            //pictureBox1.Invalidate();
         }
 
         private void FillBtn_Click(object sender, EventArgs e)
@@ -206,7 +183,28 @@ namespace GraphicRedactor
 
         private void MoveBtn_Click(object sender, EventArgs e)
         {
+            isDrawing = false;
             isMoving = true;
+        }
+
+        private void SerializeBtn_Click(object sender, EventArgs e)
+        {
+            tool.Serialize(listOfShapes);
+        }
+
+        private void DeserializeBtn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog folderBrowser = new OpenFileDialog();
+            DialogResult result = folderBrowser.ShowDialog();
+            string filePath = "";
+            if (result == DialogResult.OK)
+            {
+                // Set the selected folder path to the text box
+                filePath = folderBrowser.FileName;
+            }
+
+            listOfShapes = tool.Deserialize(filePath);
+            tool.RerenderShape(listOfShapes);
         }
     }
 }

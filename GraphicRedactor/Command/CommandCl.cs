@@ -82,27 +82,12 @@ namespace GraphicRedactor.Command
         }
         public virtual List<Shape> Fill(List<Shape> shapes, Color color, Point point)
         {
-            //var newList = new List<Shape>(shapes);
-
-            //for (int i = 0; i < shapes.Count; i++)
-            //{
-            //    if (shapes[i].ContainsPoint(point))
-            //    {
-            //        var shapeCopy = shapes[i].CloneShape();
-            //        shapeCopy.Color = color;
-            //        newList.Remove(shapes[i]);
-            //        newList.Add(shapeCopy);
-            //        //var shapeCopy = shapes[i];
-            //        //shapes.Remove(shapes[i]);
-            //        //shapes.Add(shapeCopy);
-            //        break;
-            //    }
-            //}
             return shapes;
         }
-        public void MoveShape()
-        {
-        }
 
+        public virtual Shape MoveShape(Shape shape, Point startingPoint)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

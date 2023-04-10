@@ -39,13 +39,15 @@
             Undo = new Button();
             Redo = new Button();
             panel1 = new Panel();
+            SerializeBtn = new Button();
+            MoveBtn = new Button();
             pictureBox2 = new PictureBox();
+            FillBtn = new Button();
             panel2 = new Panel();
             label1 = new Label();
             panel3 = new Panel();
             label2 = new Label();
-            FillBtn = new Button();
-            MoveBtn = new Button();
+            DeserializeBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -190,6 +192,8 @@
             // panel1
             // 
             panel1.BackColor = Color.CornflowerBlue;
+            panel1.Controls.Add(DeserializeBtn);
+            panel1.Controls.Add(SerializeBtn);
             panel1.Controls.Add(MoveBtn);
             panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(Rectangle);
@@ -208,6 +212,36 @@
             panel1.Size = new Size(258, 869);
             panel1.TabIndex = 12;
             // 
+            // SerializeBtn
+            // 
+            SerializeBtn.BackColor = SystemColors.ButtonHighlight;
+            SerializeBtn.Cursor = Cursors.Hand;
+            SerializeBtn.FlatStyle = FlatStyle.Flat;
+            SerializeBtn.ForeColor = SystemColors.ActiveCaptionText;
+            SerializeBtn.Location = new Point(55, 597);
+            SerializeBtn.Margin = new Padding(0);
+            SerializeBtn.Name = "SerializeBtn";
+            SerializeBtn.Size = new Size(150, 40);
+            SerializeBtn.TabIndex = 14;
+            SerializeBtn.Text = "Serialize";
+            SerializeBtn.UseVisualStyleBackColor = false;
+            SerializeBtn.Click += SerializeBtn_Click;
+            // 
+            // MoveBtn
+            // 
+            MoveBtn.BackColor = SystemColors.ButtonHighlight;
+            MoveBtn.Cursor = Cursors.Hand;
+            MoveBtn.FlatStyle = FlatStyle.Flat;
+            MoveBtn.ForeColor = SystemColors.ActiveCaptionText;
+            MoveBtn.Location = new Point(55, 557);
+            MoveBtn.Margin = new Padding(0);
+            MoveBtn.Name = "MoveBtn";
+            MoveBtn.Size = new Size(150, 40);
+            MoveBtn.TabIndex = 13;
+            MoveBtn.Text = "Move";
+            MoveBtn.UseVisualStyleBackColor = false;
+            MoveBtn.Click += MoveBtn_Click;
+            // 
             // pictureBox2
             // 
             pictureBox2.BackgroundImage = Properties.Resources.pen_1_;
@@ -218,6 +252,21 @@
             pictureBox2.Size = new Size(258, 145);
             pictureBox2.TabIndex = 12;
             pictureBox2.TabStop = false;
+            // 
+            // FillBtn
+            // 
+            FillBtn.BackColor = SystemColors.ButtonHighlight;
+            FillBtn.Cursor = Cursors.Hand;
+            FillBtn.FlatStyle = FlatStyle.Flat;
+            FillBtn.ForeColor = SystemColors.ActiveCaptionText;
+            FillBtn.Location = new Point(55, 517);
+            FillBtn.Margin = new Padding(0);
+            FillBtn.Name = "FillBtn";
+            FillBtn.Size = new Size(150, 40);
+            FillBtn.TabIndex = 11;
+            FillBtn.Text = "Fill";
+            FillBtn.UseVisualStyleBackColor = false;
+            FillBtn.Click += FillBtn_Click;
             // 
             // panel2
             // 
@@ -261,35 +310,20 @@
             label2.TabIndex = 0;
             label2.Text = "X:  ; Y:";
             // 
-            // FillBtn
+            // DeserializeBtn
             // 
-            FillBtn.BackColor = SystemColors.ButtonHighlight;
-            FillBtn.Cursor = Cursors.Hand;
-            FillBtn.FlatStyle = FlatStyle.Flat;
-            FillBtn.ForeColor = SystemColors.ActiveCaptionText;
-            FillBtn.Location = new Point(55, 517);
-            FillBtn.Margin = new Padding(0);
-            FillBtn.Name = "FillBtn";
-            FillBtn.Size = new Size(150, 40);
-            FillBtn.TabIndex = 11;
-            FillBtn.Text = "Fill";
-            FillBtn.UseVisualStyleBackColor = false;
-            FillBtn.Click += FillBtn_Click;
-            // 
-            // MoveBtn
-            // 
-            MoveBtn.BackColor = SystemColors.ButtonHighlight;
-            MoveBtn.Cursor = Cursors.Hand;
-            MoveBtn.FlatStyle = FlatStyle.Flat;
-            MoveBtn.ForeColor = SystemColors.ActiveCaptionText;
-            MoveBtn.Location = new Point(55, 557);
-            MoveBtn.Margin = new Padding(0);
-            MoveBtn.Name = "MoveBtn";
-            MoveBtn.Size = new Size(150, 40);
-            MoveBtn.TabIndex = 13;
-            MoveBtn.Text = "Move";
-            MoveBtn.UseVisualStyleBackColor = false;
-            MoveBtn.Click += MoveBtn_Click;
+            DeserializeBtn.BackColor = SystemColors.ButtonHighlight;
+            DeserializeBtn.Cursor = Cursors.Hand;
+            DeserializeBtn.FlatStyle = FlatStyle.Flat;
+            DeserializeBtn.ForeColor = SystemColors.ActiveCaptionText;
+            DeserializeBtn.Location = new Point(55, 637);
+            DeserializeBtn.Margin = new Padding(0);
+            DeserializeBtn.Name = "DeserializeBtn";
+            DeserializeBtn.Size = new Size(150, 40);
+            DeserializeBtn.TabIndex = 15;
+            DeserializeBtn.Text = "Deserialize";
+            DeserializeBtn.UseVisualStyleBackColor = false;
+            DeserializeBtn.Click += DeserializeBtn_Click;
             // 
             // Form1
             // 
@@ -336,5 +370,7 @@
         private Label label2;
         private Button MoveBtn;
         private Button FillBtn;
+        private Button SerializeBtn;
+        private Button DeserializeBtn;
     }
 }

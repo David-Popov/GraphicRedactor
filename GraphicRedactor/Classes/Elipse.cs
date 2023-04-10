@@ -8,6 +8,10 @@ namespace GraphicRedactor.Classes
 {
     public class Elipse : Shape
     {
+        public Elipse()
+        {
+            this.ShapeType = typeof(Elipse).BaseType.ToString();
+        }
         public override bool ContainsPoint(Point point)
         {
             return point.X >= StartLocation.X && point.X <= EndLocation.X && point.Y >= StartLocation.Y && point.Y <= EndLocation.Y;

@@ -1,12 +1,13 @@
-﻿using System;
+﻿using GraphicRedactor.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GraphicRedactor.Classes
+namespace GraphicRedactor.Tools
 {
-    public abstract class Shape
+    public class DeserializedObject
     {
         public string ShapeType { get; set; }
         public Point StartLocation { get; set; }
@@ -20,14 +21,5 @@ namespace GraphicRedactor.Classes
         public Color BorderColor { get; set; } = Color.DarkGray;
 
         public Color PreviousColor { get; set; }
-
-        public abstract void Draw(Graphics g);
-
-        public virtual bool ContainsPoint(Point point)
-        {
-            return false;
-        }
-
-        public abstract Shape CloneShape();
     }
 }

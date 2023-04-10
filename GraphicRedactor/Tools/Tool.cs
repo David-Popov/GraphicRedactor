@@ -1,7 +1,9 @@
 ﻿using GraphicRedactor.Classes;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.Intrinsics.Arm;
 using System.Text;
@@ -86,6 +88,84 @@ namespace GraphicRedactor.Tools
             list = redoStack.Pop();
             pictureBox1.Invalidate();
             return list;
+        }
+
+        public void Serialize(List<Shape> shapes)
+        {
+            foreach (var shape in shapes)
+            {
+                shape.ShapeType = shape.GetType().Name.ToString();
+            }
+            var json = JsonConvert.SerializeObject(shapes);
+            File.WriteAllText(@"D:\\SaveShapes.json", json);
+        }
+
+        public List<Shape> Deserialize(string filename)
+        {
+            if (filename == "") return null;
+            var json = File.ReadAllText(@$"{filename}");
+            var deserializedShapes = JsonConvert.DeserializeObject<List<DeserializedObject>>(json);
+            var listOfShapes = new List<Shape>();
+            Shape createdShape;
+            foreach (var shape in deserializedShapes)
+            {
+                if (shape.ShapeType == typeof(RectangleCl).Name.ToString())
+                {
+                    createdShape = new RectangleCl()
+                    {
+                        Color = shape.Color,
+                        Width = shape.Width,
+                        Height = shape.Height,
+                        ShapeType = shape.ShapeType,
+                        StartLocation = shape.StartLocation,
+                        EndLocation = shape.EndLocation,
+                        BorderColor = shape.BorderColor,
+                        IsFocused = shape.IsFocused,
+                        PreviousColor = shape.PreviousColor,
+                    };
+                    listOfShapes.Add(createdShape);
+                }
+                else if (shape.ShapeType == typeof(Elipse).Name.ToString())
+                {
+                    createdShape = new Elipse()
+                    {
+                        Color = shape.Color,
+                        Width = shape.Width,
+                        Height = shape.Height,
+                        ShapeType = shape.ShapeType,
+                        StartLocation = shape.StartLocation,
+                        EndLocation = shape.EndLocation,
+                        BorderColor = shape.BorderColor,
+                        IsFocused = shape.IsFocused,
+                        PreviousColor = shape.PreviousColor,
+                    };
+                    listOfShapes.Add(createdShape);
+                }
+                else if (shape.ShapeType == typeof(Line).Name.ToString())
+                {
+                    createdShape = new Line()
+                    {
+                        Color = shape.Color,
+                        Width = shape.Width,
+                        Height = shape.Height,
+                        ShapeType = shape.ShapeType,
+                        StartLocation = shape.StartLocation,
+                        EndLocation = shape.EndLocation,
+                        BorderColor = shape.BorderColor,
+                        IsFocused = shape.IsFocused,
+                        PreviousColor = shape.PreviousColor,
+                    };
+                    listOfShapes.Add(createdShape);
+                }
+            }
+            if (listOfShapes.Count > 0)
+            {
+                return listOfShapes;
+            }
+            else
+            {
+                return new List<Shape>();
+            }
         }
     }
 }
