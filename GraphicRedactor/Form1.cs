@@ -199,7 +199,6 @@ namespace GraphicRedactor
             string filePath = "";
             if (result == DialogResult.OK)
             {
-                // Set the selected folder path to the text box
                 filePath = folderBrowser.FileName;
             }
 
