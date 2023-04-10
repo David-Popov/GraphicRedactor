@@ -39,6 +39,7 @@
             Undo = new Button();
             Redo = new Button();
             panel1 = new Panel();
+            DeserializeBtn = new Button();
             SerializeBtn = new Button();
             MoveBtn = new Button();
             pictureBox2 = new PictureBox();
@@ -47,7 +48,7 @@
             label1 = new Label();
             panel3 = new Panel();
             label2 = new Label();
-            DeserializeBtn = new Button();
+            ClearBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -192,6 +193,7 @@
             // panel1
             // 
             panel1.BackColor = Color.CornflowerBlue;
+            panel1.Controls.Add(ClearBtn);
             panel1.Controls.Add(DeserializeBtn);
             panel1.Controls.Add(SerializeBtn);
             panel1.Controls.Add(MoveBtn);
@@ -211,6 +213,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(258, 869);
             panel1.TabIndex = 12;
+            // 
+            // DeserializeBtn
+            // 
+            DeserializeBtn.BackColor = SystemColors.ButtonHighlight;
+            DeserializeBtn.Cursor = Cursors.Hand;
+            DeserializeBtn.FlatStyle = FlatStyle.Flat;
+            DeserializeBtn.ForeColor = SystemColors.ActiveCaptionText;
+            DeserializeBtn.Location = new Point(55, 637);
+            DeserializeBtn.Margin = new Padding(0);
+            DeserializeBtn.Name = "DeserializeBtn";
+            DeserializeBtn.Size = new Size(150, 40);
+            DeserializeBtn.TabIndex = 15;
+            DeserializeBtn.Text = "Deserialize";
+            DeserializeBtn.UseVisualStyleBackColor = false;
+            DeserializeBtn.Click += DeserializeBtn_Click;
             // 
             // SerializeBtn
             // 
@@ -310,20 +327,20 @@
             label2.TabIndex = 0;
             label2.Text = "X:  ; Y:";
             // 
-            // DeserializeBtn
+            // ClearBtn
             // 
-            DeserializeBtn.BackColor = SystemColors.ButtonHighlight;
-            DeserializeBtn.Cursor = Cursors.Hand;
-            DeserializeBtn.FlatStyle = FlatStyle.Flat;
-            DeserializeBtn.ForeColor = SystemColors.ActiveCaptionText;
-            DeserializeBtn.Location = new Point(55, 637);
-            DeserializeBtn.Margin = new Padding(0);
-            DeserializeBtn.Name = "DeserializeBtn";
-            DeserializeBtn.Size = new Size(150, 40);
-            DeserializeBtn.TabIndex = 15;
-            DeserializeBtn.Text = "Deserialize";
-            DeserializeBtn.UseVisualStyleBackColor = false;
-            DeserializeBtn.Click += DeserializeBtn_Click;
+            ClearBtn.BackColor = SystemColors.ButtonHighlight;
+            ClearBtn.Cursor = Cursors.Hand;
+            ClearBtn.FlatStyle = FlatStyle.Flat;
+            ClearBtn.ForeColor = SystemColors.ActiveCaptionText;
+            ClearBtn.Location = new Point(55, 677);
+            ClearBtn.Margin = new Padding(0);
+            ClearBtn.Name = "ClearBtn";
+            ClearBtn.Size = new Size(150, 40);
+            ClearBtn.TabIndex = 16;
+            ClearBtn.Text = "Clear";
+            ClearBtn.UseVisualStyleBackColor = false;
+            ClearBtn.Click += ClearBtn_Click;
             // 
             // Form1
             // 
@@ -372,5 +389,6 @@
         private Button FillBtn;
         private Button SerializeBtn;
         private Button DeserializeBtn;
+        private Button ClearBtn;
     }
 }

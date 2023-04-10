@@ -206,5 +206,12 @@ namespace GraphicRedactor
             listOfShapes = tool.Deserialize(filePath);
             tool.RerenderShape(listOfShapes);
         }
+
+        private void ClearBtn_Click(object sender, EventArgs e)
+        {
+            g.Clear(pictureBox1.BackColor);
+            listOfShapes.Clear();
+            pictureBox1.Invalidate();
+        }
     }
 }
