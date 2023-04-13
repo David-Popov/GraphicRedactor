@@ -90,14 +90,14 @@ namespace GraphicRedactor.Tools
             return list;
         }
 
-        public void Serialize(List<Shape> shapes)
+        public void Serialize(List<Shape> shapes,string path)
         {
             foreach (var shape in shapes)
             {
                 shape.ShapeType = shape.GetType().Name.ToString();
             }
             var json = JsonConvert.SerializeObject(shapes);
-            File.WriteAllText(@"D:\\SaveShapes.json", json);
+            File.WriteAllText(@$"{path}", json);
         }
 
         public List<Shape> Deserialize(string filename)

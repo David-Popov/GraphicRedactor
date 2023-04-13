@@ -2,6 +2,7 @@ using GraphicRedactor.Classes;
 using GraphicRedactor.Command;
 using GraphicRedactor.Tools;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace GraphicRedactor
 {
@@ -189,7 +190,12 @@ namespace GraphicRedactor
 
         private void SerializeBtn_Click(object sender, EventArgs e)
         {
-            tool.Serialize(listOfShapes);
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "JSON | *.json";
+            saveFileDialog.ShowDialog();
+            string path = saveFileDialog.FileName;
+
+            tool.Serialize(listOfShapes,path);
         }
 
         private void DeserializeBtn_Click(object sender, EventArgs e)
